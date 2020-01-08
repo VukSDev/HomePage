@@ -1,8 +1,26 @@
 .clock {
     color: $grey-light;
-    font-size: 10rem;
+    font-size: 7rem;
     padding-bottom: 3rem;
     font-weight: 300;
 
     @include onselection;
+
+    &:hover {
+        cursor: default;
+    }
+}
+
+.date {
+    color: $grey-light;
+    font-size: 4rem;
+    padding-bottom: 5rem;
+    font-weight: 300;
+    text-transform: lowercase;
+
+    @include onselection;
+
+    &:hover {
+        cursor: default;
+    }
 }

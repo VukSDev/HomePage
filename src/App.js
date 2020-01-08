@@ -33,17 +33,20 @@ import Clock from './Clock/Clock';
 
 function App() {
   return (
-    <div className="global-container">
-      <div className="middle-container">
-        <Clock time="05:36" />
-        <InputBox />
-        <div className="bookmark-container">
-          <Bookmark site="https://www.4chan.org/g/" target="_blank" image="/images/4chan.png"/>
-          <Bookmark site="https://www.reddit.com/" target="_blank" image="/images/reddit.png"/>
-          <Bookmark site="https://www.youtube.com/" target="_blank" image="/images/youtube.png"/>
+    <div>
+      <div className="global-container">
+        <div className="middle-container">
+          <Clock type="clock" />
+          <Clock type="date" />
+          <InputBox placeholder="duckduckgo"/>
+          <div className="bookmark-container">
+            <Bookmark site="https://www.4chan.org/g/" target="_blank" image="/images/4chan.png"/>
+            <Bookmark site="https://www.reddit.com/" target="_blank" image="/images/reddit.png"/>
+            <Bookmark site="https://www.youtube.com/" target="_blank" image="/images/youtube.png"/>
+          </div>
         </div>
+        <Sidebar/>
       </div>
-      <Sidebar />
     </div>
   )
 }

@@ -1,6 +1,6 @@
 @mixin transition {
-    transition: all .5s;
-    transition-timing-function: cubic-bezier(.3,.11,.21,1);
+    transition: all .4s;
+    transition-timing-function: cubic-bezier(.92,.13,.5,.85);
 }
 
 @mixin onselection {

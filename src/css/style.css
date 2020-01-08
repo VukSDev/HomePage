@@ -47,8 +47,8 @@ body {
   border-style: solid;
   border-color: rgba(255, 255, 255, 0.5);
   border-width: .1rem;
-  transition: all .5s;
-  transition-timing-function: cubic-bezier(0.3, 0.11, 0.21, 1); }
+  transition: all .4s;
+  transition-timing-function: cubic-bezier(0.92, 0.13, 0.5, 0.85); }
   .inputbox::selection {
     background: rgba(31, 82, 21, 0.5); }
   .inputbox::placeholder {
@@ -59,8 +59,8 @@ body {
     border-color: rgba(255, 255, 255, 0.8); }
   .inputbox:focus {
     outline: none;
-    transition: all .5s;
-    transition-timing-function: cubic-bezier(0.3, 0.11, 0.21, 1); }
+    transition: all .4s;
+    transition-timing-function: cubic-bezier(0.92, 0.13, 0.5, 0.85); }
     .inputbox:focus::placeholder {
       color: transparent; }
 
@@ -68,8 +68,8 @@ body {
   cursor: default;
   padding: 5rem 7rem;
   opacity: .5;
-  transition: all .5s;
-  transition-timing-function: cubic-bezier(0.3, 0.11, 0.21, 1); }
+  transition: all .4s;
+  transition-timing-function: cubic-bezier(0.92, 0.13, 0.5, 0.85); }
   .bookmark:hover {
     cursor: default;
     opacity: .8;
@@ -89,33 +89,60 @@ body {
   display: flex;
   flex-direction: column;
   position: absolute;
-  transition: all .5s;
-  transition-timing-function: cubic-bezier(0.3, 0.11, 0.21, 1); }
-  .sidebar--arrow {
+  transform: translate(-35rem);
+  transition: all .4s;
+  transition-timing-function: cubic-bezier(0.92, 0.13, 0.5, 0.85); }
+  .sidebar-arrow {
     position: absolute;
     margin-top: 2rem;
     margin-left: 6rem;
     width: 5rem;
     align-self: flex-end;
     opacity: .7;
-    transition: all .5s;
-    transition-timing-function: cubic-bezier(0.3, 0.11, 0.21, 1); }
-    .sidebar--arrow:hover {
+    transition: all .4s;
+    transition-timing-function: cubic-bezier(0.92, 0.13, 0.5, 0.85); }
+    .sidebar-arrow:hover {
       opacity: 1; }
-    .sidebar--arrow img {
+    .sidebar-arrow img {
       width: 5rem;
-      transform: rotate(90deg);
-      transition: all .5s;
-      transition-timing-function: cubic-bezier(0.3, 0.11, 0.21, 1); }
-      .sidebar--arrow img::selection {
+      transform: rotate(-90deg);
+      transition: all .4s;
+      transition-timing-function: cubic-bezier(0.92, 0.13, 0.5, 0.85); }
+      .sidebar-arrow img::selection {
         background: rgba(31, 82, 21, 0.5); }
-      .sidebar--arrow img:active {
-        transform: rotate(-90deg); }
+  .sidebar-list {
+    align-self: center; }
+    .sidebar-list--element {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 3rem;
+      padding: 3rem;
+      opacity: 0;
+      transition: all .4s;
+      transition-timing-function: cubic-bezier(0.92, 0.13, 0.5, 0.85); }
+      .sidebar-list--element::selection {
+        background: rgba(31, 82, 21, 0.5); }
+      .sidebar-list--element:first-child {
+        padding-top: 10rem; }
+      .sidebar-list--element:hover {
+        cursor: default; }
 
 .clock {
   color: rgba(255, 255, 255, 0.5);
-  font-size: 10rem;
+  font-size: 7rem;
   padding-bottom: 3rem;
   font-weight: 300; }
   .clock::selection {
     background: rgba(31, 82, 21, 0.5); }
+  .clock:hover {
+    cursor: default; }
+
+.date {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 4rem;
+  padding-bottom: 5rem;
+  font-weight: 300;
+  text-transform: lowercase; }
+  .date::selection {
+    background: rgba(31, 82, 21, 0.5); }
+  .date:hover {
+    cursor: default; }
