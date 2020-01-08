@@ -1,0 +1,8 @@
+.clock {
+    color: $grey-light;
+    font-size: 10rem;
+    padding-bottom: 3rem;
+    font-weight: 300;
+
+    @include onselection;
+}

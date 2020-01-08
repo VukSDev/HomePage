@@ -1,0 +1,10 @@
+@mixin transition {
+    transition: all .5s;
+    transition-timing-function: cubic-bezier(.3,.11,.21,1);
+}
+
+@mixin onselection {
+    &::selection {
+        background: rgba($color: #1f5215, $alpha: .5);
+    }
+}

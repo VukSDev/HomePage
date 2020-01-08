@@ -1,0 +1,24 @@
+.bookmark {
+    cursor: default;
+    padding: 5rem 7rem;
+    opacity: .5;
+    @include transition;
+
+    &:hover {
+        cursor: default;
+        opacity: .8;
+        transform: scale(1.03);
+    }
+
+    & a {
+        cursor: default;
+
+        &:hover {
+            cursor: default;
+        }
+    }
+
+    & img {
+        @include onselection;
+    }
+}
