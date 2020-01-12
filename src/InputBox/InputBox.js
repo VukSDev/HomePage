@@ -2,7 +2,7 @@ import React from 'react'
 
 const inputBox = (props) => {
     return (
-        <input type="text" className="inputbox" placeholder={props.placeholder} onKeyDown={props.key} /*value={props.value} onChange={props.changeHandler}*//>
+        <input type="text" className="inputbox" placeholder={props.placeholder} value={props.inputValue} onChange={props.changed} onKeyPress={props.enter}/>
     )
 }
 

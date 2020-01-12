@@ -1,5 +1,8 @@
 import React from 'react'
 
+// Components
+import BackgroundBox from '../BackgroundBox/BackgroundBox';
+
 const sidebar = (props) => {
     return (
         <div className="sidebar" id="closed">
@@ -13,6 +16,7 @@ const sidebar = (props) => {
                 <div className="sidebar-list--element">TODO 3</div>
                 <div className="sidebar-list--element">TODO 4</div>
             </div>
+            <BackgroundBox backgroundLink={props.backgroundLink} changed={props.changed}/>
         </div>
     )
 }
@@ -21,14 +25,18 @@ const listElements = document.getElementsByClassName('sidebar-list--element');
 
 // Opens and closes the sidebar
 function toggleSidebar() {
-    if(document.getElementsByClassName('sidebar')[0].id === 'closed') {
-        document.getElementsByClassName('sidebar')[0].id = 'open';
+    // Store the sidebar element and the sidebar arrow element
+    const sidebarEl = document.getElementsByClassName('sidebar')[0];
+    const sidebarArrowEl = document.getElementsByClassName('sidebar-arrow')[0];
+
+    if(sidebarEl.id === 'closed') {
+        sidebarEl.id = 'open';
 
         // Slide sidebar from the left
-        document.getElementsByClassName('sidebar')[0].style.transform = 'translate(0rem)';
+        sidebarEl.style.transform = 'translate(0rem)';
 
         // Rotates the arrow to point left
-        document.getElementsByClassName('sidebar-arrow')[0].getElementsByTagName('img')[0].style.transform = 'rotate(90deg)';
+        sidebarArrowEl.getElementsByTagName('img')[0].style.transform = 'rotate(90deg)';
 
         // Shows the elements
         for(let i = 0; i < listElements.length; i++) {
@@ -36,14 +44,14 @@ function toggleSidebar() {
         }
     }
 
-    else if(document.getElementsByClassName('sidebar')[0].id === 'open') {
-        document.getElementsByClassName('sidebar')[0].id = 'closed';
+    else if(sidebarEl.id === 'open') {
+        sidebarEl.id = 'closed';
 
         // Slide sidebar to the left
-        document.getElementsByClassName('sidebar')[0].style.transform = 'translate(-35rem)';
+        sidebarEl.style.transform = 'translate(-35rem)';
 
         // Rotates the arrow to point right
-        document.getElementsByClassName('sidebar-arrow')[0].getElementsByTagName('img')[0].style.transform = 'rotate(-90deg)';
+        sidebarArrowEl.getElementsByTagName('img')[0].style.transform = 'rotate(-90deg)';
 
         // Hides the elements
         for(let i = 0; i < listElements.length; i++) {
