@@ -7,30 +7,6 @@ import Bookmark from './Bookmark/Bookmark';
 import Sidebar from './Sidebar/Sidebar';
 import Clock from './Clock/Clock';
 
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
 class App extends Component {
   state = {
     // inputbox
@@ -41,7 +17,7 @@ class App extends Component {
 
     //sidebar - background link
     potentialBackgroundLink: '',
-    backgroundLink: '/images/background.jpg'
+    backgroundLink: '/background.jpg'
   }
 
   // Changes search engine based on the given parameter
@@ -54,6 +30,7 @@ class App extends Component {
       case '-g':
         this.setState({
           placeholder: 'google',
+          search: 'https://www.google.com/search?q=',
           isSearchOn: true,
           value: ''
         });
@@ -63,6 +40,7 @@ class App extends Component {
       case '-ddg':
         this.setState({
           placeholder: 'duckduckgo',
+          search: 'https://duckduckgo.com/?q=',
           isSearchOn: true,
           value: ''
         });
@@ -72,6 +50,7 @@ class App extends Component {
       case '-w':
         this.setState({
           placeholder: 'wikipedia',
+          search: 'https://en.wikipedia.org/wiki/',
           isSearchOn: true,
           value: ''
         });
@@ -81,6 +60,7 @@ class App extends Component {
       case '-yt':
         this.setState({
           placeholder: 'youtube',
+          search: 'https://www.youtube.com/results?search_query=',
           isSearchOn: true,
           value: ''
         });
@@ -97,6 +77,10 @@ class App extends Component {
   
   // Changes background image when url is passed to the input box at the bottom of the sidebar
   backgroundChangeHandler = (event) => {
+    event.preventDefault();
+    let currentBackground = this.state.backgroundLink;
+    let currentPotentialBackground = this.state.potentialBackgroundLink;
+
     this.setState({
       potentialBackgroundLink: event.target.value
     });
@@ -115,9 +99,9 @@ class App extends Component {
     }
     else if (this.state.potentialBackgroundLink === "default") {
       this.setState({
-        backgroundLink: '/images/background.jpg'
+        backgroundLink: '/background.jpg'
       })
-      bodyElement.style.backgroundImage = "url('/images/background.jpg')";
+      bodyElement.style.backgroundImage = "url('/background.jpg')";
     }
     else {
       bodyElement.style.backgroundImage = "url('" + this.state.backgroundLink + "')";
@@ -126,42 +110,12 @@ class App extends Component {
   }
 
   // Listens to enter to search the chosen search engine
-  keyPressHandler = (event) => {
-    if(event.key === "Enter" && this.state.isSearchOn === true && this.state.value !== "") {
-      console.log("PRESS");
-      switch(this.state.placeholder) {
-        case 'google':
-          this.setState({
-            search: 'https://www.google.com/search?q=' + this.state.value
-          })
-          window.open(this.state.search);
-          break;
+  submitHandler = (event) => {
+    event.preventDefault();
 
-        case 'duckduckgo':
-          this.setState({
-            search: 'https://duckduckgo.com/?q=' + this.state.value
-          })
-          window.open(this.state.search);
-        break;
+    console.log("Searching for " + this.state.value + " on " + this.state.placeholder + "...");
 
-        case 'wikipedia':
-          this.setState({
-            search: 'https://en.wikipedia.org/wiki/' + this.state.value
-          })
-          window.open(this.state.search);
-        break;
-
-        case 'youtube':
-          this.setState({
-            search: 'https://www.youtube.com/results?search_query=' + this.state.value
-          })
-          window.open(this.state.search);
-        break;          
-
-        default:
-          break;
-      }
-    }
+    window.open(this.state.search + this.state.value);
   }
   
   render() {
@@ -171,11 +125,11 @@ class App extends Component {
           <div className="middle-container">
             <Clock type="clock" />
             <Clock type="date" />
-            <InputBox placeholder={this.state.placeholder} inputValue={this.state.value} changed={this.searchChangeHandler} enter={this.keyPressHandler}/>
+            <InputBox placeholder={this.state.placeholder} inputValue={this.state.value} changed={this.searchChangeHandler} enter={this.submitHandler}/>
             <div className="bookmark-container">
-              <Bookmark site="https://www.4chan.org/g/" target="_blank" image="/images/4chan.png"/>
-              <Bookmark site="https://www.reddit.com/" target="_blank" image="/images/reddit.png"/>
-              <Bookmark site="https://www.youtube.com/" target="_blank" image="/images/youtube.png"/>
+              <Bookmark site="https://www.4chan.org/g/" target="_blank" image="/4chan.png"/>
+              <Bookmark site="https://www.reddit.com/" target="_blank" image="/reddit.png"/>
+              <Bookmark site="https://www.youtube.com/" target="_blank" image="/youtube.png"/>
             </div>
           </div>
           <Sidebar backgroundLink={this.state.backgroundLink} changed={this.backgroundChangeHandler}/>

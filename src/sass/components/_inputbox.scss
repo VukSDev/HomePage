@@ -18,6 +18,10 @@
 
     @include onselection;
 
+    &-button {
+        display: none;
+    }
+    
     &::placeholder {
         color: $grey-light;
     }

@@ -3,7 +3,10 @@ import '../css/style.css'
 
 const backgroundBox = (props) => {
     return(
-        <input placeholder="" className="backgroundbox" type="text" onChange={props.changed}/>
+        <form className="backgroundbox-form" onSubmit={props.changed}>
+            <input placeholder="" className="backgroundbox" type="text" spellcheck="false" />
+            <button className="inputbox-button"></button>
+        </form>
     )
 }
 

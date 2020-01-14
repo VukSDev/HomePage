@@ -55,6 +55,8 @@ body {
   transition-timing-function: cubic-bezier(0.92, 0.13, 0.5, 0.85); }
   .inputbox::selection {
     background: rgba(31, 82, 21, 0.5); }
+  .inputbox-button {
+    display: none; }
   .inputbox::placeholder {
     color: rgba(255, 255, 255, 0.5); }
   .inputbox:hover {
@@ -171,6 +173,8 @@ body {
   transition-timing-function: cubic-bezier(0.92, 0.13, 0.5, 0.85); }
   .backgroundbox::selection {
     background: rgba(31, 82, 21, 0.5); }
+  .backgroundbox-form {
+    align-self: center; }
   .backgroundbox::placeholder {
     color: rgba(255, 255, 255, 0.5); }
   .backgroundbox:hover {

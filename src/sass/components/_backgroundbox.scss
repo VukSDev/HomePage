@@ -22,6 +22,10 @@
 
     @include onselection;
 
+    &-form {
+        align-self: center;
+    }
+
     &::placeholder {
         color: $grey-light;
     }
