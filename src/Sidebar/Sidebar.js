@@ -7,7 +7,7 @@ const sidebar = (props) => {
     return (
         <div className="sidebar" id="closed">
             <div className="sidebar-arrow" onClick={toggleSidebar}>
-                <img id="closed-arrow" src="/images/arrow.png" alt=""/>
+                <img id="closed-arrow" src="/arrow.png" alt=""/>
             </div>
 
             <div className="sidebar-list">

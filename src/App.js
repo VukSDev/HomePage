@@ -76,38 +76,38 @@ class App extends Component {
   }
   
   // Changes background image when url is passed to the input box at the bottom of the sidebar
-  backgroundChangeHandler = (event) => {
-    event.preventDefault();
-    let currentBackground = this.state.backgroundLink;
-    let currentPotentialBackground = this.state.potentialBackgroundLink;
+  // backgroundChangeHandler = (event) => {
+  //   event.preventDefault();
+  //   let currentBackground = this.state.backgroundLink;
+  //   let currentPotentialBackground = this.state.potentialBackgroundLink;
 
-    this.setState({
-      potentialBackgroundLink: event.target.value
-    });
+  //   this.setState({
+  //     potentialBackgroundLink: event.target.value
+  //   });
 
-    const bodyElement = document.getElementsByTagName("body")[0];
+  //   const bodyElement = document.getElementsByTagName("body")[0];
     
-    if(this.state.potentialBackgroundLink.slice(this.state.potentialBackgroundLink.length - 3) === "png" ||
-      this.state.potentialBackgroundLink.slice(this.state.potentialBackgroundLink.length - 3) === "jpg" ||
-      this.state.potentialBackgroundLink.slice(this.state.potentialBackgroundLink.length - 3) === "JPG" ||
-      this.state.potentialBackgroundLink.slice(this.state.potentialBackgroundLink.length - 3) === "PNG" ) {
-      this.setState({
-        backgroundLink: this.state.potentialBackgroundLink
-      })
+  //   if(this.state.potentialBackgroundLink.slice(this.state.potentialBackgroundLink.length - 3) === "png" ||
+  //     this.state.potentialBackgroundLink.slice(this.state.potentialBackgroundLink.length - 3) === "jpg" ||
+  //     this.state.potentialBackgroundLink.slice(this.state.potentialBackgroundLink.length - 3) === "JPG" ||
+  //     this.state.potentialBackgroundLink.slice(this.state.potentialBackgroundLink.length - 3) === "PNG" ) {
+  //     this.setState({
+  //       backgroundLink: this.state.potentialBackgroundLink
+  //     })
         
-      bodyElement.style.backgroundImage = "url('" + this.state.backgroundLink + "')";
-    }
-    else if (this.state.potentialBackgroundLink === "default") {
-      this.setState({
-        backgroundLink: '/background.jpg'
-      })
-      bodyElement.style.backgroundImage = "url('/background.jpg')";
-    }
-    else {
-      bodyElement.style.backgroundImage = "url('" + this.state.backgroundLink + "')";
-      console.log(this.state.backgroundLink);
-    }
-  }
+  //     bodyElement.style.backgroundImage = "url('" + this.state.backgroundLink + "')";
+  //   }
+  //   else if (this.state.potentialBackgroundLink === "default") {
+  //     this.setState({
+  //       backgroundLink: '/background.jpg'
+  //     })
+  //     bodyElement.style.backgroundImage = "url('/background.jpg')";
+  //   }
+  //   else {
+  //     bodyElement.style.backgroundImage = "url('" + this.state.backgroundLink + "')";
+  //     console.log(this.state.backgroundLink);
+  //   }
+  // }
 
   // Listens to enter to search the chosen search engine
   submitHandler = (event) => {
@@ -132,7 +132,7 @@ class App extends Component {
               <Bookmark site="https://www.youtube.com/" target="_blank" image="/youtube.png"/>
             </div>
           </div>
-          <Sidebar backgroundLink={this.state.backgroundLink} changed={this.backgroundChangeHandler}/>
+          <Sidebar /*backgroundLink={this.state.backgroundLink} changed={this.backgroundChangeHandler}*//>
         </div>
       </div>
     )
