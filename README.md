@@ -5,7 +5,7 @@
 This is a simple home page with a few functionalities.
 
 Search bar changes it's search engine depending on the command the user gives it.
-Once the commaned is typed, pressing _Space bar_ changes the search engine.
+Once the command is typed, pressing _Space bar_ changes the search engine.
 
 **Commands**:
 
