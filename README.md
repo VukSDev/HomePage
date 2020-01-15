@@ -29,6 +29,9 @@ Typing _clear_ followed by _enter_ clears all the tasks from the list.
 **Coming up**
 
 Cross-session TODO list saving
+
 Background image changing
+
 Weather info
+
 Help menu
