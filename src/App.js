@@ -1,5 +1,10 @@
+//-IMPORTS-------------------------------------------------------//
 import React, { Component } from 'react';
+
+// Styles
 import './css/style.css';
+
+// Images
 import logo4chan from './images/4chan.png';
 import logoReddit from './images/reddit.png';
 import logoYoutube from './images/youtube.png';
@@ -11,20 +16,32 @@ import InputBox from './InputBox/InputBox';
 import Bookmark from './Bookmark/Bookmark';
 import Sidebar from './Sidebar/Sidebar';
 import Clock from './Clock/Clock';
+import TodoList from './TodoList/TodoList';
+//--------------------------------------------------------------//
+
+const listElements = document.getElementsByClassName("sidebar-list--element");
 
 class App extends Component {
   state = {
-    // inputbox
+    // Inputbox
     isSearchOn: true,
     placeholder: 'duckduckgo',
     value: '',
     search: 'https://duckduckgo.com/?q=',
 
-    //sidebar - background link
+    // Sidebar - background link
     potentialBackgroundLink: '',
-    backgroundLink: '/background.jpg'
+    backgroundLink: '/background.jpg',
+
+    // Sidebar - Todo list
+    taskName: ""
   }
   
+  // Styles to apply inline
+  inlineStyles = {
+    // Background image for global container
+    backgroundImage: 'url(' + backgroundImage + ')'
+  }
   
   // Changes search engine based on the given parameter
   searchChangeHandler = (event) => {
@@ -80,40 +97,6 @@ class App extends Component {
         break;
       }
   }
-  
-  // Changes background image when url is passed to the input box at the bottom of the sidebar
-  // backgroundChangeHandler = (event) => {
-  //   event.preventDefault();
-  //   let currentBackground = this.state.backgroundLink;
-  //   let currentPotentialBackground = this.state.potentialBackgroundLink;
-
-  //   this.setState({
-  //     potentialBackgroundLink: event.target.value
-  //   });
-
-  //   const bodyElement = document.getElementsByTagName("body")[0];
-    
-  //   if(this.state.potentialBackgroundLink.slice(this.state.potentialBackgroundLink.length - 3) === "png" ||
-  //     this.state.potentialBackgroundLink.slice(this.state.potentialBackgroundLink.length - 3) === "jpg" ||
-  //     this.state.potentialBackgroundLink.slice(this.state.potentialBackgroundLink.length - 3) === "JPG" ||
-  //     this.state.potentialBackgroundLink.slice(this.state.potentialBackgroundLink.length - 3) === "PNG" ) {
-  //     this.setState({
-  //       backgroundLink: this.state.potentialBackgroundLink
-  //     })
-        
-  //     bodyElement.style.backgroundImage = "url('" + this.state.backgroundLink + "')";
-  //   }
-  //   else if (this.state.potentialBackgroundLink === "default") {
-  //     this.setState({
-  //       backgroundLink: '/background.jpg'
-  //     })
-  //     bodyElement.style.backgroundImage = "url('/background.jpg')";
-  //   }
-  //   else {
-  //     bodyElement.style.backgroundImage = "url('" + this.state.backgroundLink + "')";
-  //     console.log(this.state.backgroundLink);
-  //   }
-  // }
 
   // Listens to enter to search the chosen search engine
   submitHandler = (event) => {
@@ -123,11 +106,35 @@ class App extends Component {
 
     window.open(this.state.search + this.state.value);
   }
+
+  // Changes the text of the task name
+  taskNameChangeHandler = (event) => {
+    this.setState({
+      taskName: event.target.value
+    });
+  }
   
-  // Styles to apply inline
-  inlineStyles = {
-    // Background image for global container
-    backgroundImage: 'url(' + backgroundImage + ')'
+  // Write a function that handles creation of new elements
+  addItemTodo = (event) => {
+    event.preventDefault();
+    for(let i = 0; i < listElements.length; i++) {
+        if((listElements[i].style.transform === "" || listElements[i].style.transform === "scale(0)") && this.state.taskName !== "" && listElements[i].innerHTML === "") {
+            listElements[i].style.transform = "scale(1)";
+            listElements[i].innerHTML = this.state.taskName;
+            break;
+        }
+    }
+
+    if(this.state.taskName === "clear") {
+      for(let i = 0; i < listElements.length; i++) {
+        listElements[i].style.transform = "scale(0)";
+        setTimeout(function(){listElements[i].innerHTML = "";}, 400);
+      }
+    }
+    
+    this.setState({
+      taskName: ""
+    });
   }
   
   render() {
@@ -144,19 +151,13 @@ class App extends Component {
               <Bookmark site="https://www.youtube.com/" target="_blank" image={logoYoutube}/>
             </div>
           </div>
-          <Sidebar arrowImage={arrowImage}/*backgroundLink={this.state.backgroundLink} changed={this.backgroundChangeHandler}*//>
+        <Sidebar arrowImage={arrowImage} todoList={
+        <TodoList onSubmit={this.addItemTodo} taskName={this.state.taskName} onChange={this.taskNameChangeHandler}/>
+        }/>
         </div>
       </div>
     )
   }
 }
-
-
-
-// // Assign background to body
-// const backgroundBodyAssign = () => {
-//   document.getElementsByClassName('global-container')[0].style.backgroundImage = "url('" + backgroundImage + "')";
-// }
-// backgroundBodyAssign();
 
 export default App;

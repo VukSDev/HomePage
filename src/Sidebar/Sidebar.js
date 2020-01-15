@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 // Components
 // import BackgroundBox from '../BackgroundBox/BackgroundBox';
@@ -10,12 +10,7 @@ const sidebar = (props) => {
                 <img id="closed-arrow" src={props.arrowImage} alt=""/>
             </div>
 
-            <div className="sidebar-list">
-                <div className="sidebar-list--element">TODO 1</div>
-                <div className="sidebar-list--element">TODO 2</div>
-                <div className="sidebar-list--element">TODO 3</div>
-                <div className="sidebar-list--element">TODO 4</div>
-            </div>
+            {props.todoList}
             {/* <BackgroundBox backgroundLink={props.backgroundLink} changed={props.changed}/> */}
        </div>
     )
