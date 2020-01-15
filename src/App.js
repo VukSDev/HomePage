@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import './css/style.css';
+import logo4chan from './images/4chan.png';
+import logoReddit from './images/reddit.png';
+import logoYoutube from './images/youtube.png';
+import backgroundImage from './images/background.jpg';
+import arrowImage from './images/arrow.png';
 
 // Components
 import InputBox from './InputBox/InputBox';
@@ -19,7 +24,8 @@ class App extends Component {
     potentialBackgroundLink: '',
     backgroundLink: '/background.jpg'
   }
-
+  
+  
   // Changes search engine based on the given parameter
   searchChangeHandler = (event) => {
     this.setState({
@@ -118,25 +124,39 @@ class App extends Component {
     window.open(this.state.search + this.state.value);
   }
   
+  // Styles to apply inline
+  inlineStyles = {
+    // Background image for global container
+    backgroundImage: 'url(' + backgroundImage + ')'
+  }
+  
   render() {
     return (
       <div>
-        <div className="global-container">
+        <div className="global-container" style={this.inlineStyles}>
           <div className="middle-container">
             <Clock type="clock" />
             <Clock type="date" />
             <InputBox placeholder={this.state.placeholder} inputValue={this.state.value} changed={this.searchChangeHandler} enter={this.submitHandler}/>
             <div className="bookmark-container">
-              <Bookmark site="https://www.4chan.org/g/" target="_blank" image="/4chan.png"/>
-              <Bookmark site="https://www.reddit.com/" target="_blank" image="/reddit.png"/>
-              <Bookmark site="https://www.youtube.com/" target="_blank" image="/youtube.png"/>
+              <Bookmark site="https://www.youtube.com/" target="_blank" image={logo4chan}/>
+              <Bookmark site="https://www.reddit.com/" target="_blank" image={logoReddit}/>
+              <Bookmark site="https://www.youtube.com/" target="_blank" image={logoYoutube}/>
             </div>
           </div>
-          <Sidebar /*backgroundLink={this.state.backgroundLink} changed={this.backgroundChangeHandler}*//>
+          <Sidebar arrowImage={arrowImage}/*backgroundLink={this.state.backgroundLink} changed={this.backgroundChangeHandler}*//>
         </div>
       </div>
     )
   }
 }
+
+
+
+// // Assign background to body
+// const backgroundBodyAssign = () => {
+//   document.getElementsByClassName('global-container')[0].style.backgroundImage = "url('" + backgroundImage + "')";
+// }
+// backgroundBodyAssign();
 
 export default App;

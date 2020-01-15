@@ -1,13 +1,13 @@
 import React from 'react'
 
 // Components
-import BackgroundBox from '../BackgroundBox/BackgroundBox';
+// import BackgroundBox from '../BackgroundBox/BackgroundBox';
 
 const sidebar = (props) => {
     return (
         <div className="sidebar" id="closed">
             <div className="sidebar-arrow" onClick={toggleSidebar}>
-                <img id="closed-arrow" src="/arrow.png" alt=""/>
+                <img id="closed-arrow" src={props.arrowImage} alt=""/>
             </div>
 
             <div className="sidebar-list">
@@ -16,8 +16,8 @@ const sidebar = (props) => {
                 <div className="sidebar-list--element">TODO 3</div>
                 <div className="sidebar-list--element">TODO 4</div>
             </div>
-            <BackgroundBox backgroundLink={props.backgroundLink} changed={props.changed}/>
-        </div>
+            {/* <BackgroundBox backgroundLink={props.backgroundLink} changed={props.changed}/> */}
+       </div>
     )
 }
 
